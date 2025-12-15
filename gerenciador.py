@@ -28,7 +28,6 @@ def executar_gerenciador():
             print('Opção inválida')
 
 
-
 def mostrar_menu():
 
     print('\n1. Cadastrar Tarefa')
@@ -44,8 +43,24 @@ def mostrar_menu():
         return 0
 
 def cadastrar_tarefa():
+    tarefa = input(str('Digite o nome do da tarefa que deseja cadastrar!')).strip()
+       
+    if not tarefa:
+        print('O nome da tarefa não poed sere vazio')
+        return
+ 
+    for i in tarefas:
+        if tarefa.lower() == i['nome'].lower():
+            print('Tarefa já existe')
+            return
     
-    print('oi')
+    tarefa_nova = {'nome': tarefa, 'status': 'Pendente'}
+    tarefas.append(tarefa_nova)
+    print('Tarefa adicionada com sucesso!')
+    
+def listar_tarefas():
+    for i in tarefas:
+        print(tarefas)
 
 if __name__ == '__main__':
     executar_gerenciador()
